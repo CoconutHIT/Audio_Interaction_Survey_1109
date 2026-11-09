@@ -1,0 +1,40 @@
+% \begin{table*}[t]
+%     \centering
+%     \caption{Overview of agentic audio interaction systems.}
+%     \label{tab:agentic-systems}
+%     \small
+%     \begin{tabular}{l|l|l|l|l|l}
+%         \toprule
+%         System & Year & Interaction Environment & Core Capability & Modality & Reference \\
+%         \midrule
+%         % TODO: Add agentic system entries.
+%         \bottomrule
+%     \end{tabular}
+% \end{table*}
+\begin{table*}[t]
+    \centering
+    \caption{Overview of agentic audio interaction systems.}
+    \label{tab:agentic-systems}
+    \footnotesize
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.12}
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.13\textwidth}c>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.16\textwidth}l@{}}
+        \toprule
+        System & Year & Interaction Environment & Core Capability & Modality & Reference \\
+        \midrule
+        AURA & 2025 & Digital services & Cascaded voice assistant with dynamic tool invocation & Speech, text, tools & \citep{DBLP:journals/corr/abs-2506-23049} \\
+        DuplexSLA & 2026 & Conversational tool use & Synchronizes speech and structured actions on a shared chunk timeline & Speech, action text & \citep{DBLP:journals/corr/abs-2605-20755} \\
+        \addlinespace
+        SALMONN-duo & 2026 & Voice assistant with backend agent & Delegates slower reasoning while the speech frontend remains responsive & Speech, text, tools & \citep{DBLP:journals/corr/abs-2609-34247} \\
+        Gander & 2026 & Multimodal dialogue and agent tasks & Connects a real-time frontend to an asynchronous agent runtime & Audio, vision, text & \citep{DBLP:journals/corr/abs-2609-08977} \\
+        Qwen-Audio-Agent & 2026 & Desktop, cockpit, and service tasks & Routes between direct tool use and delegated execution; tracks task and delivery state & Speech, text, tools & \citep{DBLP:journals/corr/abs-2609-25195} \\
+        Jarvis-Audio & 2026 & Live voice tasks with revisions & Selects task-control operations against versioned records and validates execution and delivery & Speech, task state & \citep{WEB:arxiv/2610.23804} \\
+        \addlinespace
+        NMM-HRI & 2025 & Robot manipulation & Fuses spoken commands, pointing, and depth observations to generate actions & Speech, gesture, RGB-D & \citep{DBLP:journals/corr/abs-2501-00785} \\
+        VLAS & 2025 & Customized robot manipulation & Grounds spoken instructions and speaker-specific knowledge in a robot policy & Speech, image, action & \citep{DBLP:journals/corr/abs-2502-13508} \\
+        \addlinespace
+        CarMem & 2025 & In-car voice-assistant setting & Extracts, maintains, and retrieves categorized user preferences & Dialogue text, memory & \citep{DBLP:journals/corr/abs-2501-09645} \\
+        Voice Memory & 2026 & Domain-specific ASR correction & Revises an editable correction memory with score-gated updates & ASR hypotheses, text & \citep{DBLP:journals/corr/abs-2607-26410} \\
+        \bottomrule
+    \end{tabularx}
+\end{table*}

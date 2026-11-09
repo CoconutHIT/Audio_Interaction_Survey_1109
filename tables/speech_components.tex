@@ -1,0 +1,71 @@
+\begin{table*}[!htbp]
+    \centering
+    \caption{Overview of speech component methods and representative systems.
+    RVQ: residual vector quantization; FSQ: finite scalar quantization;
+    VAE: variational autoencoder.}
+    \label{tab:speech-components}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.0}
+    \setlength{\defaultaddspace}{2pt}
+    \begin{tabular}{@{}
+        >{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-6pt\relax}
+        >{\raggedright\arraybackslash}p{\dimexpr0.14\linewidth-6pt\relax}
+        >{\raggedright\arraybackslash}p{\dimexpr0.28\linewidth-6pt\relax}
+        >{\raggedright\arraybackslash}p{\dimexpr0.40\linewidth-6pt\relax}@{}}
+        \toprule
+        \textbf{Representation} & \textbf{Component} & \textbf{Work} & \textbf{Highlight} \\
+        \midrule
+        Discrete & Semantic tokenizer & HuBERT~\citep{DBLP:journals/taslp/HsuBTLSM21} &
+        Content-related units support linguistic modeling; reconstruction needs an additional decoder. \\
+        \addlinespace
+        Discrete & Semantic tokenizer & CosyVoice 2~\citep{DBLP:journals/corr/abs-2412-10117} &
+        Recognition supervision preserves content; FSQ improves utilization; synthesis uses acoustic conditioning. \\
+        \addlinespace
+        Discrete & Acoustic tokenizer & SoundStream~\citep{DBLP:journals/taslp/ZeghidourLOST22}; EnCodec~\citep{DBLP:journals/tmlr/DefossezCSA23} &
+        RVQ preserves acoustic detail but increases the number of per-frame prediction targets. \\
+        \addlinespace
+        Discrete & Acoustic tokenizer & WavTokenizer~\citep{DBLP:conf/iclr/Ji00C0Z0C0LZY0J25} &
+        Single-codebook compression reduces prediction targets while prioritizing reconstruction quality. \\
+        \addlinespace
+        Discrete & Semantic--\newline acoustic\newline hybrid tokenizer & SpeechTokenizer~\citep{DBLP:conf/iclr/ZhangZLZQ24} &
+        First-layer distillation emphasizes content; later RVQ layers supply acoustic detail. \\
+        \addlinespace
+        Discrete & Semantic--\newline acoustic\newline hybrid tokenizer & X-Codec~\citep{DBLP:conf/aaai/YeSL00DKCPLGX25} &
+        Joint quantization and semantic reconstruction combine content cues with acoustic fidelity. \\
+        \addlinespace
+        Discrete & Semantic--\newline acoustic\newline hybrid tokenizer & Mimi~\citep{DBLP:journals/corr/abs-2410-00037} &
+        Causal, low-frame-rate coding supports streaming; multiple codebooks retain prediction overhead. \\
+        \addlinespace
+        Discrete & Semantic--\newline acoustic\newline hybrid tokenizer & DualCodec~\citep{DBLP:conf/interspeech/LiLLHWWZ025} &
+        Dual encoding enriches first-layer content; low frame rate shortens temporal sequences. \\
+        \midrule
+        Continuous & Embedding model & tGSLM~\citep{DBLP:conf/emnlp/AlgayresANCSSD23} &
+        Word-sized embeddings, contrastive training, and nearest-neighbor sampling. \\
+        \addlinespace
+        Continuous & Encoder; decoder & Spectron~\citep{DBLP:conf/iclr/NachmaniLHSAMRS24} &
+        Projects speech features into the LLM; predicts spectrogram frames after text. \\
+        \addlinespace
+        Continuous input;\newline discrete output & Encoder; decoder & LauraGPT~\citep{DBLP:journals/corr/abs-2310-04673} &
+        Conformer input features with discrete codec-code generation. \\
+        \addlinespace
+        Continuous input;\newline discrete output & Encoder; decoder & Mini-Omni~\citep{DBLP:journals/corr/abs-2408-16725} &
+        Whisper encoder and audio adapter with discrete audio-token generation. \\
+        \addlinespace
+        Continuous input;\newline discrete output & Encoder; decoder & SLAM-Omni~\citep{DBLP:conf/acl/Chen0YLLXN00L0025} &
+        Downsampled Whisper features and linear projection; semantic-token output. \\
+        \addlinespace
+        Continuous output & Generation module & Flow-Omni~\citep{DBLP:journals/corr/abs-2412-04917} &
+        LLM states condition flow matching over acoustic representations. \\
+        \addlinespace
+        Continuous & Tokenizer & Cont-SPT~\citep{DBLP:conf/naacl/LiXSCK25} &
+        Continuous speech vectors avoid discrete quantization for TTS. \\
+        \addlinespace
+        Continuous & Latent model; generator & CALM~\citep{DBLP:conf/iclr/RouardORZD26} &
+        Audio VAE latents with context-conditioned, consistency-based generation. \\
+        \addlinespace
+        Continuous & Shared tokenizer & HoliTok~\citep{DBLP:journals/corr/abs-2605-29948} &
+        Compact shared latents support both speech understanding and generation. \\
+        \bottomrule
+    \end{tabular}
+\end{table*}

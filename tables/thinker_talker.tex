@@ -1,0 +1,32 @@
+\begin{table}[t]
+    \centering
+    \caption{Thinker-Talker systems in turn-based speech dialogue: continuous audio inputs and text replies. Visual encoders indicate additional capabilities. AR/NAR: autoregressive/non-autoregressive; CTC: connectionist temporal classification; KV: key/value; MTP: multi-token prediction; AuT: Audio Transformer; TMRoPE: time-aligned multimodal rotary position embedding; ARIA: Adaptive Rate Interleave Alignment.}
+    \label{tab:thinker-talker}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-6pt\relax}>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-6pt\relax}>{\raggedright\arraybackslash}p{\dimexpr0.29\linewidth-6pt\relax}>{\raggedright\arraybackslash}p{\dimexpr0.27\linewidth-6pt\relax}@{}}
+        \toprule
+        \textbf{System} & \textbf{Thinker}\newline Input / understanding & \textbf{Interface}\newline Talker conditions & \textbf{Talker}\newline Generation / streaming \\
+        \midrule
+        LLaMA-Omni\newline\citep{DBLP:conf/iclr/FangGZMZ025} & Whisper + adapter;\newline speech instructions & Response hidden states;\newline no separate text input & NAR/CTC units;\newline chunked vocoding \\
+        \addlinespace
+        Freeze-Omni\newline\citep{DBLP:conf/icml/WangLFZS000M25} & Streaming encoder + adapter; frozen LLM & Text tokens +\newline hidden-state prefix KV & NAR prefill + AR tokens;\newline streaming codec \\
+        \addlinespace
+        MinMo\newline\citep{DBLP:journals/corr/abs-2501-06282} & SenseVoice + projector;\newline speech, emotion, events & Text embeddings + query/response states; projection & AR tokens; fixed interleaving;\newline chunked flow matching \\
+        \addlinespace
+        Qwen2.5-Omni\newline\citep{DBLP:journals/corr/abs-2503-20215} & Audio/vision encoders;\newline TMRoPE alignment & Text embeddings + Thinker states; shared history & Dual-track AR;\newline sliding-window flow matching \\
+        \addlinespace
+        LLaMA-Omni~2\newline\citep{DBLP:journals/corr/abs-2505-02625} & Whisper + adapter;\newline multi-turn adaptation & Text embeddings + response states; gated fusion & AR read/write scheduling;\newline causal flow matching \\
+        \addlinespace
+        Qwen3-Omni\newline\citep{DBLP:journals/corr/abs-2509-17765} & AuT + vision encoder;\newline temporal-ID alignment & Historical/streaming text + multimodal states & AR + residual-codebook MTP;\newline causal ConvNet \\
+        \addlinespace
+        \mbox{Uni-MoE-2.0-Omni}\newline\citep{DBLP:journals/corr/abs-2511-12609}
+        & Whisper/Q-Former + vision encoder;\newline 3D RoPE alignment
+        & Text tokens + voice-control prompts
+        & AR tokens; sentence-level streaming;\newline WavTokenizer decoding \\
+        \addlinespace
+        Qwen3.5-Omni\newline\citep{DBLP:journals/corr/abs-2604-15804} & AuT + vision encoder;\newline explicit timestamps & Historical/streaming text + multimodal states; voice prompt & ARIA interleaving;\newline multi-codebook prediction;\newline causal ConvNet \\
+        \bottomrule
+    \end{tabular}
+\end{table}

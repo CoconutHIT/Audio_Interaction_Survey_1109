@@ -1,0 +1,323 @@
+\documentclass[dvipsnames]{article}
+
+\usepackage[final]{slm}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{booktabs} 
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{epigraph}
+\usepackage{makecell}
+\usepackage{listings}
+
+\usepackage[labelfont=bf]{caption} % For bold caption labels
+
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algorithm2e}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{color, soul}
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{geometry}
+\usepackage{times}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{booktabs} 
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{bbding}
+\usepackage{awesomebox}
+\usepackage{bbding}
+\usepackage[most,breakable]{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+% \usepackage[fencedCode]{markdown}
+% \usepackage{listings}
+% \usepackage{minted}
+\usepackage{CJKutf8}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{pgffor} 
+\usepackage{fontawesome5}
+\usepackage{nicematrix} 
+\usepackage{paralist}
+\usepackage[edges]{forest}
+\usepackage{siunitx}
+\usepackage{tikz-dependency}
+\usepackage{tikz}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{hyphenat}
+\usepackage{tabularx}
+\usepackage{placeins}
+
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+\providecommand{\keywords}[1]
+{
+  \small
+  \textbf{\textit{Keywords---}} #1
+}
+
+\usepackage{caption} 
+\captionsetup[table]{skip=10pt}
+% Make figure/table numbers include section number (e.g. "Figure 3.8")
+\usepackage{chngcntr}
+%\counterwithin{figure}{section}
+%\counterwithin{table}{section}
+
+\usepackage[colorlinks, linkcolor=RoyalBlue, anchorcolor=BrickRed, citecolor=RoyalBlue, urlcolor=RoyalBlue]{hyperref}
+
+
+
+\usepackage{cleveref}
+\crefname{section}{§}{§§}
+\Crefname{section}{§}{§§}
+
+\newcommand\ourmodel{placeholder\xspace}
+
+%\newcommand\refsec[1]{\hyperref[sec:#1]{§\ref{sec:#1}:~\textsc{#1}}}
+\newcommand\refsec[1]{Section~\hyperref[sec:#1]{\ref{sec:#1}}}
+\newcommand\refsecs[2]{\hyperref[sec:#1]{§\ref{sec:#1}:~\textsc{#1}}, \hyperref[sec:#2]{§\ref{sec:#2}:~\textsc{#2}}}
+\newcommand{\zxh}[1]{\textcolor{blue}{#1}}
+
+
+\usepackage[tikz]{bclogo}
+\definecolor{msftBlue}{RGB}{0,164,239}
+\definecolor{msftGreen}{RGB}{127,186,0}
+\definecolor{msftYello}{RGB}{255,185,0}
+\definecolor{mypurple}{RGB}{138,43,226} 
+\definecolor{msftBlack}{RGB}{0,0,0}
+\usepackage{forest}
+\usepackage{tikz}
+\usepackage{adjustbox}
+% 沿用正文已有的 natbib 设置，以支持 \citep
+\usetikzlibrary{calc}
+
+\definecolor{brightlavender}{rgb}{0.75,0.58,0.89}
+\definecolor{lightgreen}{rgb}{0.56,0.93,0.56}
+\definecolor{lightyellow}{rgb}{1.00,0.88,0.40}
+\definecolor{paleblue}{rgb}{0.53,0.81,0.98}
+
+\providecommand{\taxwork}[2]{#1~\citep{#2}}
+
+
+
+
+% This file supports both direct compilation and \input from a main manuscript.
+% The comparison table uses core LaTeX tabular; no table packages are required.
+% Bibliography entries remain in module_level_external_control.bib.
+\ifdefined\subsubsection
+  % A parent manuscript has already loaded its document class.
+  \let\ModuleExternalStart\relax
+  \let\ModuleExternalFinish\relax
+\else
+  % Standalone preview in the current editor.
+  \def\ModuleExternalStart{%
+    \documentclass[10pt,twocolumn]{article}%
+    \usepackage[a4paper,margin=0.75in]{geometry}%
+    \begin{document}%
+  }
+  \def\ModuleExternalFinish{%
+    \IfFileExists{module_level_external_control.bib}{%
+      \bibliographystyle{plain}%
+      \bibliography{module_level_external_control}%
+    }{}%
+    \end{document}%
+  }
+\fi
+\ModuleExternalStart
+
+\newcommand{\finding}[1]{
+\begin{center}
+\begin{minipage}{0.325\textwidth}
+	\begin{bclogo}[couleur= msftBlack!05, epBord= 1, arrondi=0.1, logo=\bcoutil,marge= 2, ombre=true, blur, couleurBord=msftBlack!10, tailleOndu=3, sousTitre ={\bfseries #1}]{}
+	\end{bclogo}
+\end{minipage}
+\end{center}
+}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{definition}[thm]{Definition}
+\setlength\epigraphrule{0pt}
+\newtcolorbox{myboxnote}[1][]{
+  breakable,
+  title=#1,
+%   colback=white,
+  colback=cyan!0,
+  colbacktitle=cyan!0,
+  coltitle=black,
+  fonttitle=\bfseries,
+  bottomrule=0pt,
+  toprule=0pt,
+  leftrule=1.5pt,
+  rightrule=1.5pt,
+  titlerule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=lightgray,
+}
+\setlength\epigraphwidth{.5\textwidth}
+
+\usepackage{mdframed}
+
+\definecolor{academicblue}{RGB}{54, 95, 145}
+
+
+\newtcbox{\smybox}[1][red]{on line,
+arc=1pt,colback=#1!10!white,colframe=#1!100!black,
+before upper={\rule[-3pt]{0pt}{10pt}},
+boxsep=0pt,left=6pt,right=6pt,top=2pt,bottom=0pt,boxrule=0pt,leftrule=1pt,rightrule=1pt}
+
+
+\tcbset{
+  iclrtakeawaybox/.style={
+    width=\linewidth,
+    colback=gray!5,                 % 淡灰背景
+    colframe=gray!60,              % 灰色边框
+    colbacktitle=gray!30,            % 白色标题背景
+    coltitle=black,                % 黑色标题字体
+    fonttitle=\bfseries,     % 加粗大号标题
+    boxrule=0.5pt,                 % 边框粗细
+    % dashed,                        % 启用虚线
+    % dash pattern=on 3pt off 2pt,   % 虚线样式
+    arc=2pt,                       % 轻微圆角
+    sharp corners=south,           % 底部保持直角
+    attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+    boxed title style={boxrule=0pt, colframe=white},
+    enhanced,
+    drop shadow southeast           % 可选阴影（可注释掉）
+  }
+}
+\newtcolorbox{TakeawayBox}[2][]{iclrtakeawaybox,title=#2,#1}
+
+
+\newenvironment{itemsize*}%
+ {\leftmargini=20pt\begin{itemize}%
+  \setlength{\itemsep}{3pt}%
+  \setlength{\parskip}{0pt}%
+  }%
+ {\end{itemize}}
+\newenvironment{enumerate*}%
+ {\begin{enumerate}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{0pt}}%
+ {\end{enumerate}}
+
+% --------page number start
+\usepackage{fancyhdr} % to change header and footers
+\usepackage{blindtext} % to quickly get a full document
+\usepackage{ulem}
+
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}} 
+
+\newcommand{\mytodo}[1]{\textcolor{red}{#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+
+\pagestyle{fancy}
+\fancyhf{}
+% \rhead{\today}
+\lhead{\rightmark}
+% \lhead{\bfseries My name}
+\cfoot{\thepage}
+
+\usepackage{xparse}
+\NewDocumentCommand{\heng}
+{ mO{} }{\textcolor{red}{\textsuperscript{\textit{Heng}}\textsf{\textbf{\small[#1]}}}}
+\newcommand{\sherry}[1]{{\color{blue}[Sherry: #1]\xspace}}
+\usepackage{colortbl}
+
+%Perceiving, Reasoning, Thinking, and Planning
+% Evovling from Implicit to Language-Centric Multimodal Reasoning
+\title{
+Audio Interaction Survey
+}
+
+% \author{
+% \small{Yunxin Li\thanks{Equal contribution $\ddagger$ Corresponding author, email: hubaotian@hit.edu.cn}\hspace{0.5em}, Zhenyu Liu$^*$, Zitao Li$^*$, Xuanyu Zhang, Zhenran Xu, Xinyu Chen, Haoyuan Shi, Shenyuan Jiang} \\ 
+% \small{\textbf{Xintong Wang, Jifang Wang, Shouzheng Huang, Xinping Zhao, Borui Jiang, Lanqing Hong, Longyue Wang}}\\  
+% \small{\textbf{Zhuotao Tian, Baoxing Huai, Wenhan Luo, Weihua Luo, Zheng Zhang, Baotian Hu$^\ddagger$, Min Zhang}}\\ 
+% \small{‌Harbin Institute of Technology, Shenzhen}\\
+% \footnotesize{Project: \textcolor{blue}{\url{https://github.com/HITsz-TMG/Awesome-Large-Multimodal-Reasoning-Models}}}
+% }
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% Speech language models build on established speech and dialogue capabilities by integrating language-model reasoning into spoken interaction. Architectural integration does not consistently correspond to broader interaction capabilities, however, making the field's development difficult to interpret through model categories or isolated functions. 
+% In this survey, we revisit the technical paradigms of speech language models from an interaction perspective, systematically relating individual capabilities to intersecting technical routes. 
+% Our taxonomy and roadmap cover speech components, half-duplex dialogue, and full-duplex dialogue along three dimensions of interaction: representation, language modality, and conversational timing.
+% We analyze how technical choices support or constrain the interaction experience and review the training resources and benchmarks used to develop and assess these capabilities. We further consider agentic audio interaction as a forward-looking extension in which speech is the primary interface between users and agents, while agents act in digital and physical environments. Drawing on work in tool use, agent collaboration, robotic embodiment, and persistent memory, we examine how this extension connects spoken dialogue with actions and environmental feedback. We distinguish demonstrated mechanisms from open capability requirements to outline directions for sustained collaboration between users and agents.
+
+% Speech language models build on advances in speech processing and draw on large language models for reasoning and instruction following. Their designs range from cascaded pipelines to native speech-to-speech models. Yet an end-to-end model can remain turn-based, while a modular pipeline can support full-duplex dialogue. Therefore, either architectural categories or individual interaction capabilities capture only part of the field's development. To systematically relating individual capabilities to intersecting technical routes, we revisit the field from an interaction perspective, examining how conversational content and timing jointly shape the user's experience. Our roadmap covers speech components, language modeling in half-duplex interaction, and floor management in full-duplex interaction, which are detailed organized along a shared spectrum of internalization, from mechanisms implemented in external modules to those integrated into the core model. Base on these analysis, we extend speech interaction scope to agentic audio interaction, where speech is the primary interface through which users guide actions and receive feedback from agents. Moreover, we review training datasets and evaluation benchmarks along the dimensions of conversational content and timing to clarify what the data support and what the benchmarks measure.
+
+% Natural speech interaction should help people feel understood, communicate comfortably, and guide an exchange as their needs unfold. We take human experience as the organizing objective, considering conversational content and rhythm together. Recent speech language models broaden the ways systems understand spoken input, form replies, and coordinate listening and speaking. Understanding this development requires connecting technical choices to their roles in communication, since architecture labels and isolated skills reveal only parts of an interaction. We present an interaction-centered survey of speech representations, turn-based response formation, online conversational coordination, and agentic interaction. We compare how text and speech participate in language modeling and how control and generation mechanisms determine when a system listens, speaks, or adjusts. Relating these designs to training, streaming execution, and evaluation clarifies their opportunities, constraints, and demonstrated capabilities. We further examine how tools, other agents, embodiment, and memory connect ongoing communication with task execution, distinguishing responsibility for serving people through dialogue from responsibility for performing work. This synthesis motivates research on holistic conversational rhythm, learning language and intelligence from speech, situated multi-party participation, and coordination between interaction and execution models in service of human experience.
+
+
+
+Speech language models build on advances in speech processing and draw on large language models for reasoning and instruction following. Their designs range from cascaded pipelines to native speech-to-speech models. 
+Yet an end-to-end model can remain turn-based, while a modular pipeline can support full-duplex dialogue. Therefore, architectural categories and individual interaction capabilities each capture only part of the field's development. 
+To systematically relate these capabilities to the different technical routes that support them, we revisit the field from an interaction perspective, examining how conversational content and timing jointly shape the user's experience.
+Our roadmap starts with speech representation as the foundation for spoken interaction model. We draw on half-duplex research to examine how speech and text are used in language modeling, and on full-duplex research to examine how systems manage the conversational floor. To compare designs across these work, we organize their approaches along a shared spectrum of internalization, from externally orchestrated mechanisms to model-native capabilities. 
+Based on these analyses, we extend the scope of spoken interaction and propose agentic audio interaction, where speech serves as the primary interface for users to instruct agents to act in digital or physical environments and to receive real-time feedback.  
+Moreover, we review training datasets and evaluation benchmarks along the dimensions of conversational content and timing to clarify which interaction capabilities the datasets support and which the benchmarks measure.
+By linking the demands of spoken interaction to design choices and evaluation evidence, this survey reframes the development of speech language models, establishes a unified framework linking system design, interaction capabilities, and evaluation evidence across architectures. Our work sets out a research agenda for building and evaluating systems that can sustain natural dialogue and collaborate with users in real world.
+
+
+\end{abstract}
+
+
+
+\newpage
+{
+  \hypersetup{linkcolor=RoyalBlue, linktoc=page}
+  \tableofcontents
+}
+
+
+
+\newpage
+
+% \newpage
+% \input{figures/taxonomy}
+\input{sections/1_introduction}
+\input{sections/2_landscape}
+\input{sections/3_roadmap}
+\input{sections/4_prospect}
+\input{sections/5_data}
+\input{sections/6_conclusion}
+
+\newpage
+\bibliographystyle{slm}
+\bibliography{refs,native_dynamic_refs}
+% Parse escaped underscores in DBLP DOI fields without printing backslashes.
+\newcommand{\doi}[1]{doi: \begingroup\urlstyle{rm}\nolinkurl{#1}\endgroup}
+
+
+\end{document}

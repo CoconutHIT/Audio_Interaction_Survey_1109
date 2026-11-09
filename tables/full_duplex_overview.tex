@@ -1,0 +1,229 @@
+% Required packages: booktabs, array, tabularx, caption.
+
+\begin{table*}[!tp]
+\centering
+\captionsetup{font=footnotesize,labelfont=bf,skip=4pt}
+
+\caption[Overview of full-duplex speech interaction systems and related methods]{
+Overview of full-duplex speech interaction systems and related methods.
+Systems are grouped by the depth of coupling between conversational timing
+control and the language-model backbone, then ordered by speech architecture
+(modular, Thinker--Talker, or native end-to-end).
+VAD denotes voice activity detection, EoT end of turn, ASR automatic speech
+recognition, TTS text-to-speech, and TAIL Time-Aligned Interleaving.
+IRQ and \texttt{[BC]} mark interruption and backchannel onset, respectively.
+}
+\label{tab:fd-overview}
+
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\setlength{\extrarowheight}{0pt}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{tabularx}{\linewidth}{@{}
+    >{\raggedright\arraybackslash}p{0.25\linewidth}
+    >{\raggedright\arraybackslash}p{0.115\linewidth}
+    >{\raggedright\arraybackslash}p{0.18\linewidth}
+    >{\raggedright\arraybackslash\setlength{\baselineskip}{9.5pt}}X
+@{}}
+\toprule
+\textbf{System / Work}
+& \textbf{Architecture}
+& \textbf{Input / Output}
+& \textbf{Highlight} \\
+\midrule
+
+\multicolumn{4}{@{}l}{
+    \textit{Module-Level External Control: Independent controllers make timing decisions}
+} \\
+\midrule
+
+FireRedChat~\citep{DBLP:journals/corr/abs-2509-06502}
+& Modular
+& Speech / Text, Speech
+& Target-speaker VAD pauses audio. Semantic EoT submits input \\
+
+X-Talk~\citep{DBLP:journals/corr/abs-2512-18706}
+& Modular
+& Speech / Text, Speech
+& Client pauses. Backend verifies before canceling or resuming \\
+
+SoulX-Duplug~\citep{arXiv:2603.14877}
+& Modular
+& Speech / Speech
+& Joint streaming ASR/state prediction controls LLM--TTS \\
+
+FlexDuo (GLM-4-Voice)~\citep{DBLP:journals/corr/abs-2502-13472}
+& Native
+& Speech / Speech
+& Independent Speak/Listen/Idle prediction; input filtering and buffering \\
+
+\midrule
+\multicolumn{4}{@{}l}{
+    \textit{Semi-Embedded Semantic Assistance: Explicit timing prediction from shared backbone representations}
+} \\
+\midrule
+
+VITA~\citep{DBLP:journals/corr/abs-2408-05211}
+& Modular
+& Text, Audio, Image, Video / Text, Speech
+& Query-state tokens identify valid input; dual-instance switching and external TTS \\
+
+Freeze-Omni~\citep{DBLP:journals/corr/abs-2411-00774}
+& Thinker--Talker
+& Text, Speech / Text, Speech
+& Chunk-end hidden-state classification; frozen backbone and cache-based response scheduling \\
+
+MinMo~\citep{DBLP:journals/corr/abs-2501-06282}
+& Thinker--Talker
+& Text, Audio / Text, Speech
+& Transformer--softmax maps backbone states to start/stop \\
+
+BC head (PersonaPlex/F-Actor)~\citep{DBLP:journals/corr/abs-2609-29418}
+& Native
+& Speech / Speech
+& Hidden-state backchannel-onset prediction; a threshold triggers forced \texttt{[BC]} decoding \\
+
+\midrule
+\multicolumn{4}{@{}l}{
+    \textit{Native Dynamic Interaction: Joint modeling of response content and timing during continuous generation}
+} \\
+\midrule
+
+DuplexCascade~\citep{DBLP:journals/corr/abs-2603-09180}
+& Modular
+& Speech / Text, Speech
+& Continuous ASR micro-turn input; LLM-generated wait/respond/backchannel actions \\
+
+CT-Duplex~\citep{DBLP:journals/corr/abs-2510-05150}
+& Thinker--Talker
+& Speech / Text, Speech
+& Causal reasoning while listening. States guide speech decoding \\
+
+SALMONN-omni~\citep{DBLP:journals/corr/abs-2505-17060}
+& Thinker--Talker
+& Audio / Text, Speech
+& Listening/speaking states generated with text; output embeddings condition streaming synthesis \\
+
+MiniCPM-o 4.5~\citep{DBLP:journals/corr/abs-2604-27393}
+& Thinker--Talker
+& Text, Audio, Image, Video / Text, Speech
+& Omni-Flow aligns input/output; TAIL bounds text-ahead using playback progress \\
+
+DuplexOmni~\citep{DBLP:journals/corr/abs-2606-09186}
+& Thinker--Talker
+& Audio, Video / Text, Speech
+& Time-sliced interaction; asynchronous integration of background reasoning and tool results \\
+
+Realtime-Venus (Audio/Omni)~\citep{DBLP:journals/corr/abs-2609-13814}
+& Thinker--Talker
+& Text, Audio, Image, Video / Text, Speech
+& Shared causal timeline for perception, responses, and control; asynchronous task delegation \\
+
+AdaptDuplex~\citep{DBLP:journals/corr/abs-2609-29217}
+& Thinker--Talker
+& Speech / Text, Speech
+& Behavior and window-duration tokens; bounded text-ahead and a turn-local queue \\
+
+D2 (Qwen3-Omni/LLaMA-Omni 2)~\citep{arXiv:2610.17124}
+& Thinker--Talker
+& Audio / Text, Speech
+& Encoder distillation and duplex fine-tuning; each chunk uses new input and delayed self-audio \\
+
+dGSLM~\citep{DBLP:journals/tacl/NguyenKCAHETASM23}
+& Native
+& Speech / Speech
+& Dual-channel continuation; cross-attention jointly predicts speech units and durations \\
+
+LSLM~\citep{DBLP:conf/aaai/MaSDC0WW025}
+& Native
+& Text, Speech / Speech
+& Continuous listening features condition speech decoding; an IRQ token stops output \\
+
+Moshi~\citep{DBLP:journals/corr/abs-2410-00037}
+& Native
+& Speech / Text, Speech
+& Aligned user/assistant streams; temporal modeling and within-frame codebook prediction \\
+
+SyncLLM~\citep{DBLP:conf/emnlp/VeluriPYGG24}
+& Native
+& Speech / Speech
+& Simulated bidirectional interaction; predicted concurrent user chunks replaced by observations \\
+
+OmniFlatten~\citep{DBLP:conf/acl/ZhangCDCWZLYTDZ25}
+& Native
+& Text, Speech / Text, Speech
+& Flattened speech/text with silence tokens for waiting \\
+
+Voila-autonomous~\citep{DBLP:journals/corr/abs-2505-02707}
+& Native
+& Text, Speech / Text, Speech
+& Dual-stream embedding fusion; hierarchical semantic/acoustic generation and voice conditioning \\
+
+SALM-Duplex~\citep{DBLP:journals/corr/abs-2505-15670}
+& Native
+& Speech / Text, Speech
+& Continuous user features fused with assistant streams; parallel text/codebook prediction \\
+
+NTPP~\citep{DBLP:journals/corr/abs-2506-00975}
+& Native
+& Speech / Speech
+& Dual-channel continuation; pairwise causal masking jointly predicts aligned speech tokens \\
+
+TurnGuide~\citep{DBLP:journals/corr/abs-2508-07375}
+& Native
+& Speech / Text, Speech
+& Dynamic turn splits with aligned text--speech interleaving \\
+
+FLM-Audio~\citep{DBLP:journals/corr/abs-2509-02521}
+& Native
+& Text, Speech / Text, Speech
+& Contiguous monologues and waiting intervals; dual text/speech training \\
+
+Fun-Audio-Chat-Duplex~\citep{DBLP:journals/corr/abs-2512-20156}
+& Native
+& Text, Audio / Text, Speech
+& Parallel user/assistant speech input; low-rate backbone and higher-rate speech refinement \\
+
+PersonaPlex~\citep{DBLP:journals/corr/abs-2602-06053}
+& Native
+& Text, Speech / Text, Speech
+& Moshi-style dual-stream generation; text role prompts and audio voice prompts \\
+
+F-Actor~\citep{DBLP:journals/corr/abs-2601-11329}
+& Native
+& Text, Speech / Text, Speech
+& Instruction-controlled initiation/backchannels/interruption; original codec constrains streaming inference \\
+
+Raon-SpeechChat~\citep{DBLP:journals/corr/abs-2605-23912}
+& Native
+& Text, Speech / Text, Speech
+& Causal input encoding and interleaved generation; silence/onset/backchannel tokens \\
+
+BayLing-Duplex~\citep{DBLP:journals/corr/abs-2606-14528}
+& Native
+& Speech / Text, Speech
+& Causal chunk offsets and timing preferences at fixed content \\
+
+Lychee-FD~\citep{DBLP:conf/acl/LiuZLTJCZMXHHLZ26}
+& Native
+& Speech / Text, Speech
+& Deep semantic/acoustic split with a semantic alignment channel \\
+
+MultiTalk~\citep{DBLP:journals/corr/abs-2609-36903}
+& Native
+& Speech / Text, Speech
+& Moshi-style generation extended to long, multi-party bilingual dialogue and addressee selection \\
+
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\par\smallskip
+\noindent\begin{minipage}{\linewidth}
+\ifdefined\TakeawayBox\else
+  \newenvironment{TakeawayBox}[1]
+    {\small\noindent\textbf{#1}\par\smallskip}
+    {\par}
+\fi
+\end{minipage}\par

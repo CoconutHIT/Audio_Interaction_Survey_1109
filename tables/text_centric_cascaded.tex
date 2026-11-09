@@ -1,0 +1,177 @@
+% Required packages: booktabs, graphicx
+
+\begin{table*}[t]
+    \centering
+    \caption{
+        Text-centric cascaded systems and methods.
+        \textit{Note.} SDS: spoken dialogue system.
+        Interface identifies model-facing or inter-module representations;
+        Execution highlights control and scheduling (``--'': outside scope).
+        Text-only models provide language-side foundations;
+        frameworks are compared through their cascaded paths.
+        Streaming and internal overlap can operate within alternating turns.
+    }
+    \label{tab:text-centric-cascaded-comparison}
+    \small
+    \renewcommand{\arraystretch}{1.12}
+    \setlength{\tabcolsep}{5pt}
+
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{l|l|l|l|l|l}
+        \toprule
+        \textbf{Work}
+        & \textbf{Type}
+        & \textbf{Interface}
+        & \textbf{Language Core}
+        & \textbf{Execution}
+        & \textbf{Key Feature} \\
+        \midrule
+
+        \multicolumn{6}{l}{
+            \textit{Modular systems and language-side consolidation}
+        } \\
+        \midrule
+
+        GALAXY-II \citep{DBLP:conf/interspeech/SeneffHLPSZ98}
+        & Architecture
+        & Symbolic messages
+        & Modular
+        & Hub-controlled
+        & Programmable distributed hub \\
+
+        RavenClaw \citep{DBLP:journals/csl/BohusR09}
+        & Framework
+        & Symbolic representations
+        & Modular
+        & Task-driven
+        & Task--skill separation \\
+
+        POMDP SDS \citep{DBLP:journals/pieee/YoungGTW13}
+        & Method
+        & ASR/NLU hypotheses
+        & Modular
+        & Belief-driven
+        & Uncertainty-aware control \\
+
+        Wen et al. \citep{DBLP:conf/eacl/Rojas-BarahonaG17}
+        & Model
+        & Text
+        & Neural TOD
+        & --
+        & Text-level end-to-end learning \\
+
+        Sequicity \citep{DBLP:conf/acl/KanHLJRY18}
+        & Model
+        & Text
+        & Seq2seq
+        & --
+        & Explicit belief span \\
+
+        SimpleTOD \citep{DBLP:conf/nips/Hosseini-AslMWY20}
+        & Model
+        & Text
+        & Causal LM
+        & Autoregressive
+        & State--action--response serialization \\
+
+        SOLOIST \citep{DBLP:journals/tacl/PengLLSLG21}
+        & Model
+        & Text
+        & Pretrained LM
+        & Autoregressive
+        & Transfer and machine teaching \\
+
+        \midrule
+        \multicolumn{6}{l}{
+            \textit{Modern cascades and capability integration}
+        } \\
+        \midrule
+
+        AudioGPT \citep{DBLP:conf/aaai/HuangLYSCYWHHLR24}
+        & Agent
+        & Text / tool calls
+        & ChatGPT
+        & Tool-orchestrated
+        & External audio models \\
+
+        ESPnet-SDS \citep{DBLP:conf/naacl/Arora0STCBFKTSS25}
+        & Toolkit
+        & Configurable
+        & Configurable
+        & Configurable
+        & Cascade / E2E evaluation \\
+
+        Eva \citep{DBLP:conf/ifaamas/QinZ25}
+        & Agent
+        & Text / tool calls
+        & LLM
+        & Agent-orchestrated
+        & RAG, agents, telephony \\
+
+        LiveKit Agents \citep{livekitagentsdocs}
+        & Framework
+        & Pipeline-dependent
+        & Swappable
+        & Configurable streaming
+        & Pipeline / provider selection \\
+
+        Pipecat \citep{pipecatdocs}
+        & Framework
+        & Frames
+        & Swappable
+        & Frame-streaming
+        & Frame-based processors \\
+
+        \midrule
+        \multicolumn{6}{l}{
+            \textit{Incremental processing and latency optimization}
+        } \\
+        \midrule
+
+        Schlangen \& Skantze \citep{DBLP:journals/dad/SchlangenS11}
+        & Method
+        & Incremental units
+        & Agnostic
+        & Incremental
+        & Revision and commitment \\
+
+        InproTK \citep{DBLP:conf/naacl/BaumannS12}
+        & Toolkit
+        & Incremental units
+        & Modular
+        & Incremental
+        & Reusable incremental modules \\
+
+        Skantze \& Hjalmarsson \citep{DBLP:journals/csl/SkantzeH13}
+        & Method
+        & Incremental representations
+        & Modular
+        & Incremental
+        & Planning and self-monitoring \\
+
+        Telecom Agent \citep{DBLP:journals/corr/abs-2508-04721}
+        & Agent
+        & Text
+        & 4-bit LLM
+        & Concurrent
+        & Domain ASR/TTS + RAG \\
+
+        LTS-VoiceAgent \citep{DBLP:journals/corr/abs-2601-19952}
+        & Agent
+        & Partial text
+        & LLM
+        & Semantically triggered
+        & \textit{When to think} \\
+
+        DDTSR \citep{DBLP:journals/corr/abs-2602-23266}
+        & Method
+        & Streaming text
+        & LLM
+        & Cross-stage overlap
+        & \textit{Speak while thinking} \\
+
+        \bottomrule
+    \end{tabular}
+    }
+
+\end{table*}

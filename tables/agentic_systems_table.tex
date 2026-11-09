@@ -1,0 +1,19 @@
+% Analytical comparison of capability axes, not a system ranking.
+% Requires booktabs and tabularx in the parent document.
+\begin{table*}[t]
+\centering
+\caption{Coordination boundaries of agentic speech interaction. The rows describe composable capabilities; the final column identifies evidence that a responsive interface alone cannot establish.}
+\label{tab:agentic-capability-axes}
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{@{}p{0.08\textwidth}*{4}{>{\raggedright\arraybackslash}X}@{}}
+\toprule
+\textbf{Axis} & \textbf{Capability extended} & \textbf{State to coordinate} & \textbf{Effect of later speech} & \textbf{Evidence required} \\
+\midrule
+TOOL & Available operations & Arguments, pending calls, and external results & Clarify a slot, replace a pending call, or request compensation & Verified state change; correction before and after commitment \\
+AGENT & Execution responsibility & Objectives, task ownership, progress, and returned results & Update or cancel a particular task; redirect result delivery & Update propagation, backend acknowledgment, and suppression of obsolete results \\
+EMB & Physical perception and action & Referents, motion plans, executed movement, and observed scene & Stop, constrain, or replan from the state already reached & Observed motion change and recovery, beyond command dispatch \\
+MEM & Persistent evidence & Source, subject, time, validity, and derived records & Correct attribution or content; revise retention & Correction persistence and forgetting across representations, beyond recall \\
+\bottomrule
+\end{tabularx}
+\end{table*}

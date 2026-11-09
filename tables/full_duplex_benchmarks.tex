@@ -1,0 +1,195 @@
+% Required packages in the main document:
+% \usepackage{array}
+% \usepackage{booktabs}
+% \usepackage{tabularx}
+% Keep the existing citation configuration supporting \citep.
+
+\begin{table*}[!t]
+    \centering
+    \caption{Representative benchmarks for interaction rhythm in spoken dialogue.}
+    \label{tab:full-duplex-benchmarks}
+
+    \begingroup
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.08}
+
+    \begin{tabularx}{\textwidth}{@{}
+        >{\raggedright\arraybackslash}p{0.17\textwidth}
+        >{\raggedright\arraybackslash}p{0.20\textwidth}
+        >{\raggedright\arraybackslash}p{0.13\textwidth}
+        >{\raggedright\arraybackslash}p{0.10\textwidth}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{0.08\textwidth}
+    @{}}
+        \toprule
+        \textbf{Benchmark}
+        & \textbf{Task}
+        & \textbf{Scale}
+        & \textbf{Modality}
+        & \textbf{Evaluation Focus / Metrics}
+        & \textbf{Source} \\
+        \midrule
+
+        \multicolumn{6}{@{}l}{
+            \textit{System-Level Interaction Benchmarks}
+        } \\
+        \midrule
+
+        Talking Turns
+        & Turn-taking; interruptions; agent backchannels
+        & 11 participants
+        & Speech, text
+        & Timing-based human judgments; pauses, gaps,
+          and overlaps in human--system conversations.
+        & \citep{DBLP:conf/iclr/AroraLCP025} \\
+        \addlinespace[2pt]
+
+        FDB-v1\textsuperscript{*}
+        & Turn-taking; pauses; interruptions; agent backchannels
+        & 727 samples
+        & Speech, text
+        & Task-dependent take-over rates; response latency;
+          backchannel behavior and response quality.
+        & \citep{DBLP:conf/asru/LinLLWALL25} \\
+        \addlinespace[2pt]
+
+        FD-Bench\textsuperscript{*}
+        & Interruption handling; response quality
+        & 293 dialogues
+        & Speech, text
+        & Interruption and response success; latency;
+          response quality under varying noise conditions.
+        & \citep{DBLP:conf/interspeech/PengCNMN0C25} \\
+        \addlinespace[2pt]
+
+        FDB-v2\textsuperscript{*}
+        & Multi-turn coordination; corrections;
+          task-state continuity
+        & 4 task families
+        & Speech, text
+        & Adaptive examiner; turn-taking fluency;
+          instruction following and task outcomes
+          under Fast/Slow pacing.
+        & \citep{DBLP:conf/acl/LinKSCAWL26} \\
+        \addlinespace[2pt]
+
+        MTR-DuplexBench
+        (conversational features)
+        & Multi-round turn-taking; interruptions;
+          backchannels; state maintenance
+        & 200 dialogues;
+          10 rounds each
+        & Speech, text
+        & Feature-specific success rates; latency;
+          backchannel frequency across multiple rounds.
+        & \citep{DBLP:conf/acl/HeCXLZBMK26} \\
+        \addlinespace[2pt]
+
+        HumDial-FDBench\textsuperscript{*}
+        & Interruption handling; user backchannels;
+          rejection of non-addressed speech
+        & 5,000 test cases
+        & Speech, text;
+          Chinese, English
+        & Interruption and rejection accuracy;
+          stopping and response latency in
+          human-recorded interaction scenarios.
+        & \citep{DBLP:journals/corr/abs-2601-05564} \\
+        \addlinespace[2pt]
+
+        Duplex-MPE\textsuperscript{*}
+        & Multi-party participation; addressee-sensitive
+          responding; silence and stopping
+        & 2,000 pairs;
+          4,000 streams
+        & Speech, text
+        & Response initiation; answer accuracy;
+          silence preservation; stopping after
+          request resolution.
+        & \citep{DBLP:journals/corr/abs-2609-31948} \\
+        \addlinespace[2pt]
+
+        DuplexAct-Bench\textsuperscript{*}
+        & Proactive initiation; silence;
+          interruption handling; agent backchannels
+        & 1,290 trials;
+          30 scenarios
+        & Speech, text;
+          Chinese, English
+        & Behavior-specific timing and content;
+          joint behavioral correctness;
+          backchannel alignment.
+        & \citep{DBLP:journals/corr/abs-2609-39446} \\
+
+        \midrule
+        \multicolumn{6}{@{}l}{
+            \textit{Targeted Diagnostic Benchmarks}
+        } \\
+        \midrule
+
+        TurnBench
+        & Turn-end and interruption detection
+        & $\sim$30 h;
+          154 dialogues
+        & Speech, text
+        & Event recall; false-positive rate;
+          causal detection latency.
+        & \citep{DBLP:journals/corr/abs-2608-25218} \\
+        \addlinespace[2pt]
+
+        SID-Bench\textsuperscript{*}
+        & Interruption intent; rejection of
+          non-interruptive feedback
+        & 3,700 instances
+        & Speech, text
+        & False-interruption rate;
+          semantic-breakpoint latency;
+          average penalty time.
+        & \citep{DBLP:journals/corr/abs-2603-24144} \\
+        \addlinespace[2pt]
+
+        ECHO\textsuperscript{*}
+        & Context-sensitive yielding;
+          backchannel and off-talk handling
+        & 549 instances;
+          300 pairs
+        & Speech, text
+        & Context-conditioned Yield/Keep decisions;
+          paired action correctness and consistency.
+        & \citep{DBLP:journals/corr/abs-2609-17360} \\
+        \addlinespace[2pt]
+
+        TPI-Bench
+        (TPI-VA)\textsuperscript{*}
+        & Third-party interruption awareness;
+          response-strategy selection
+        & 2,000 TPI-Test;
+          2,000 Janus-Test;
+          100 real-world cases
+        & Speech input;
+          text output
+        & Response-strategy adherence;
+          acoustic speaker discrimination;
+          response helpfulness.
+        & \citep{DBLP:conf/acl/LeeSLKY26} \\
+
+        \bottomrule
+    \end{tabularx}
+
+    \par\vspace{3pt}
+    \begin{minipage}{\textwidth}
+        \footnotesize
+        \raggedright
+        \textit{Notes.}
+        Scales refer to the listed evaluation versions or subsets.
+        FDB denotes Full-Duplex-Bench and is distinct from FD-Bench.
+        HumDial refers to its full-duplex track.
+        \textsuperscript{*} marks links to content--rhythm coordination
+        (Coordination / X), without implying a shared joint metric.
+        Diagnostic results do not by themselves establish complete
+        system-level interaction performance.
+    \end{minipage}
+
+    \endgroup
+\end{table*}

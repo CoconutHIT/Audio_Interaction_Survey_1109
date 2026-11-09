@@ -1,0 +1,193 @@
+% Required packages: booktabs, array, tabularx
+
+\begin{table*}[!tp]
+    \centering
+    \caption{
+        Representative systems and methods for half-duplex speech interaction.
+        SDS: spoken dialogue system; TOD: task-oriented dialogue;
+        CTC: connectionist temporal classification;
+        ARIA: Adaptive Rate Interleave Alignment.
+        FireRedChat is shown in its cascaded configuration.
+    }
+    \label{tab:half-duplex-systems}
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+
+    \begin{tabularx}{\textwidth}{
+        @{}
+        >{\raggedright\arraybackslash}p{0.25\textwidth}
+        >{\raggedright\arraybackslash}p{0.13\textwidth}
+        >{\raggedright\arraybackslash}p{0.24\textwidth}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        \toprule
+        \textbf{System / Work}
+        & \textbf{Architecture}
+        & \textbf{Input / Output}
+        & \textbf{Highlight} \\
+        \midrule
+
+        \multicolumn{4}{@{}l}{\textit{Text-centric cascaded systems and methods}} \\
+        \midrule
+
+        GALAXY-II~\citep{DBLP:conf/interspeech/SeneffHLPSZ98}
+        & Modular SDS & Speech / Speech
+        & Programmable hub for distributed modules \\
+
+        POMDP SDS~\citep{DBLP:journals/pieee/YoungGTW13}
+        & Modular SDS & Speech / Speech
+        & Belief-state dialogue control \\
+
+        SimpleTOD~\citep{DBLP:conf/nips/Hosseini-AslMWY20}
+        & Text-only TOD & Text / Text
+        & State--action--response serialization \\
+
+        AudioGPT~\citep{DBLP:conf/aaai/HuangLYSCYWHHLR24}
+        & Cascade & Text, Audio, Image, Score / Text, Audio, Video
+        & LLM orchestration of audio tools \\
+
+        ESPnet-SDS~\citep{DBLP:conf/naacl/Arora0STCBFKTSS25}
+        & Configurable & Configurable
+        & Cascade and end-to-end evaluation \\
+
+        Eva~\citep{DBLP:conf/ifaamas/QinZ25}
+        & Cascade & Speech / Speech
+        & Retrieval and telephony integration \\
+
+        LiveKit Agents~\citep{livekitagentsdocs}
+        & Configurable & Pipeline-dependent
+        & Interchangeable speech and language providers \\
+
+        Pipecat~\citep{pipecatdocs}
+        & Configurable & Pipeline-dependent
+        & Frame-based streaming processors \\
+
+        Schlangen \& Skantze~\citep{DBLP:journals/dad/SchlangenS11}
+        & Modular & Modality-agnostic
+        & Incremental units with revision and commitment \\
+
+        InproTK~\citep{DBLP:conf/naacl/BaumannS12}
+        & Modular & Configurable
+        & Reusable incremental processing modules \\
+
+        Telecom Agent~\citep{DBLP:journals/corr/abs-2508-04721}
+        & Cascade & Speech / Speech
+        & Domain ASR/TTS; concurrent execution \\
+
+        FireRedChat~\citep{DBLP:journals/corr/abs-2509-06502}
+        & Cascade & Speech / Text, Speech
+        & Pluggable cascade; streaming synthesis \\
+
+        LTS-VoiceAgent~\citep{DBLP:journals/corr/abs-2601-19952}
+        & Cascade & Speech / Text
+        & Speech-prefix triggers for reasoning \\
+
+        DDTSR~\citep{DBLP:journals/corr/abs-2602-23266}
+        & Cascade & Speech / Speech
+        & Early connectives; cross-stage overlap \\
+
+        \midrule
+        \multicolumn{4}{@{}l}{\textit{Thinker-Talker decoupled systems}} \\
+        \midrule
+
+        LLaMA-Omni~\citep{DBLP:conf/iclr/FangGZMZ025}
+        & Thinker-Talker & Speech / Text, Speech
+        & Response states; CTC decoding \\
+
+        Freeze-Omni~\citep{DBLP:conf/icml/WangLFZS000M25}
+        & Thinker-Talker & Text, Speech / Text, Speech
+        & Frozen LLM; hidden-state prefix \\
+
+        MinMo~\citep{DBLP:journals/corr/abs-2501-06282}
+        & Thinker-Talker & Text, Audio / Text, Speech
+        & Text and context states; interleaving \\
+
+        Qwen2.5-Omni~\citep{DBLP:journals/corr/abs-2503-20215}
+        & Thinker-Talker & Text, Audio, Image, Video / Text, Speech
+        & Shared Thinker states; dual-track decoding \\
+
+        LLaMA-Omni~2~\citep{DBLP:journals/corr/abs-2505-02625}
+        & Thinker-Talker & Speech / Text, Speech
+        & Gated fusion; read/write scheduling \\
+
+        Qwen3-Omni~\citep{DBLP:journals/corr/abs-2509-17765}
+        & Thinker-Talker & Text, Audio, Image, Video / Text, Speech
+        & Multimodal states; causal decoding \\
+
+        Uni-MoE-2.0-Omni~\citep{DBLP:journals/corr/abs-2511-12609}
+        & Thinker-Talker & Text, Audio, Image, Video / Text, Speech, Image
+        & Text and voice prompts for MoE-TTS \\
+
+        Qwen3.5-Omni~\citep{DBLP:journals/corr/abs-2604-15804}
+        & Thinker-Talker & Text, Audio, Image, Video / Text, Speech
+        & Multimodal and voice conditions; ARIA \\
+
+        \midrule
+        \multicolumn{4}{@{}l}{\textit{Native end-to-end speech systems}} \\
+        \midrule
+
+        SpeechGPT~\citep{DBLP:conf/emnlp/ZhangLZZWZQ23}
+        & Native Speech & Text, Speech / Text, Speech
+        & Discrete units; cross-modal tuning \\
+
+        USDM~\citep{DBLP:conf/nips/KimSJKKKLSOHYY24}
+        & Native Speech & Text, Speech / Text, Speech
+        & Speech-text pretraining; prosody cues \\
+
+        Mini-Omni~\citep{DBLP:journals/corr/abs-2408-16725}
+        & Native Speech & Text, Speech / Text, Speech
+        & Parallel text and audio generation \\
+
+        IntrinsicVoice~\citep{DBLP:journals/corr/abs-2410-08035}
+        & Native Speech & Text, Speech / Text, Speech
+        & GroupFormer speech compression \\
+
+        GLM-4-Voice~\citep{DBLP:journals/corr/abs-2412-02612}
+        & Native Speech & Text, Speech / Text, Speech
+        & Low-rate tokens; streaming decoding \\
+
+        Flow-Omni~\citep{DBLP:journals/corr/abs-2412-04917}
+        & Native Speech & Text, Speech / Text, Speech
+        & Continuous speech via flow matching \\
+
+        SLAM-Omni~\citep{DBLP:conf/acl/Chen0YLLXN00L0025}
+        & Native Speech & Speech / Text, Speech
+        & Grouped semantic tokens; vocoder \\
+
+        Baichuan-Audio~\citep{DBLP:journals/corr/abs-2502-17239}
+        & Native Speech & Text, Audio / Text, Speech
+        & Joint semantic-acoustic codebooks \\
+
+        Kimi-Audio~\citep{DBLP:journals/corr/abs-2504-18425}
+        & Native Speech & Text, Audio / Text, Speech
+        & Continuous inputs; discrete outputs \\
+
+        VITA-Audio~\citep{DBLP:journals/corr/abs-2505-03739}
+        & Native Speech & Text, Speech / Text, Speech
+        & Multi-token audio prediction \\
+
+        Step-Audio~2~\citep{DBLP:journals/corr/abs-2507-16632}
+        & Native Speech & Text, Audio / Text, Speech
+        & Audio-native reasoning with RL \\
+
+        MOSS-Speech~\citep{DBLP:conf/iclr/ZhaoXJWCJCLCWZC26}
+        & Native Speech & Speech / Speech
+        & Modality-specific layers; no text guidance \\
+
+        GPT-Realtime-2.1~\citep{openai2026gptrealtime21}
+        & Native Speech & Text, Audio, Image / Text, Speech
+        & Speech reasoning and tool calling \\
+
+        Qwen-Audio~3.1+~\citep{alibaba2026qwenaudio31realtime}
+        & Native Speech & Text, Audio / Text, Speech
+        & Push-to-talk with function calling \\
+
+        EVI~3~\citep{cowen2025evi3}
+        & Native Speech & Text, Speech / Text, Speech
+        & Coordinated content and prosody \\
+
+        \bottomrule
+    \end{tabularx}
+\end{table*}

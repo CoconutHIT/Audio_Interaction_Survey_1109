@@ -1,0 +1,75 @@
+% TODO: Collect and organize datasets and benchmarks. Do not add a new evaluation methodology yet.
+
+\subsection{Half-Duplex Speech Interaction}
+\label{sec:half-duplex-datasets}
+
+Interaction content concerns understanding the user's needs and making a correct, useful, and contextually appropriate contribution. These requirements apply to both turn-based and full-duplex systems. We organize benchmarks around intent understanding, context use, response quality, emotion and expression, status reporting, clarification, speech-specific understanding, and conversational continuity. Their coverage depends on whether evaluation uses fixed questions, supplied histories, or interactive tasks.
+
+\paragraph{Intent Understanding and Response Quality.}
+\label{sec:61halfduplex-intent-response}
+Intent understanding identifies the user's goal and constraints; response quality concerns whether the contribution satisfies them. VoiceBench evaluates explicit instructions and answer quality, while $\tau$-Voice extends evaluation to verifiable task completion~\citep{61halfduplex-voicebench,61halfduplex-tauvoice}. These outcomes provide complementary evidence: a plausible answer may overlook a constraint, and an unsuccessful task may reflect failures beyond interpretation. Existing benchmarks offer clearer evidence about stated requests than implicit or competing goals. Evaluation should therefore distinguish instruction adherence, answer correctness, and task progress.
+
+\paragraph{Context Use.}
+\label{sec:61halfduplex-context}
+Context use concerns selecting conversational, speaker, and acoustic evidence relevant to a response. SD-Eval tests replies conditioned on paralinguistic and environmental information, while MSU-Bench examines speaker grounding and reasoning over multi-speaker conversations~\citep{61halfduplex-sdeval,61halfduplex-msubench}. These evaluations extend beyond lexical understanding, but support different claims. Using contextual cues and attributing statements to speakers do not establish that an agent selects the appropriate addressee during live interaction. Coverage should be judged by the evidence required, rather than the presence of conversational audio alone.
+
+\paragraph{Emotion, Stance, and Spoken Expression.}
+\label{sec:61halfduplex-emotion-expression}
+Evaluation must distinguish interpreting emotion, choosing an appropriate attitude, and expressing it through speech. EmoSBench assesses emotional intelligence, SpeechEQ tests the appropriateness of acoustically contrasting responses, and RoleBreak examines sustained role behavior and vocal emotion~\citep{61halfduplex-emosbench,61halfduplex-speecheq,61halfduplex-rolebreak}. These benchmarks broaden coverage beyond emotion recognition. However, judging supplied responses does not directly demonstrate expressive generation, and semantic role adherence does not guarantee appropriate vocal delivery. Both response meaning and generated audio need to be evaluated.
+
+\paragraph{Status Reporting and Goal Clarification.}
+\label{sec:61halfduplex-status-clarification}
+Status reporting should reflect actual task progress; clarification should resolve information needed to proceed. EVA-Bench's faithfulness measures provide partial evidence about consistency with policies and tool outputs, while interactive task outcomes can reflect successful information gathering~\citep{61halfduplex-evabench,61halfduplex-tauvoice}. Neither isolates the usefulness of a progress update or the necessity of a clarification. Dedicated tests should expose pending actions, failures, and underspecified goals, then assess whether the system communicates the current state and asks a focused question without unnecessary extra turns.
+
+\paragraph{Speech-Specific Understanding.}
+\label{sec:61halfduplex-speech-understanding}
+Speech-specific understanding concerns meaning that ordinary word transcripts do not preserve. ADU-Bench's ambiguity subset probes intonation, pauses, and related spoken ambiguities; SpeechEQ controls candidate transcripts while varying acoustic delivery~\citep{61halfduplex-adubench,61halfduplex-speecheq}. Such controls help establish whether acoustic evidence affects interpretation. Robustness to noise addresses a different requirement. Evaluation should distinguish meaningful acoustic changes that warrant a different response from irrelevant variations under which the answer should remain stable.
+
+\paragraph{Multi-Turn Consistency and Recovery.}
+\label{sec:61halfduplex-consistency-recovery}
+Conversational continuity requires retaining information, revising outdated facts, and continuing after disruption. ContextDialog tests historical recall and use, Vox-Infinity adds longer dependencies and answer provenance, and IHBench evaluates responses following interruptions~\citep{61halfduplex-contextdialog,61halfduplex-voxinfinity,61halfduplex-ihbench}. These resources distinguish memory from semantic recovery. However, answering from a supplied interrupted history does not measure live playback management. Integrated evaluation of corrections, task-state updates, and subsequent user behavior remains less standardized across benchmarks.
+
+\paragraph{Evaluation Protocols.}
+\label{sec:61halfduplex-protocols}
+Fixed questions, supplied histories, and interactive environments expose different failures. Comparisons must retain the evaluated subset, history source and modality, output modality, and judging criteria. Diagnostic content scores should be connected to observable task outcomes. Where timing matters, joint success must be checked within the same interaction; separate average scores cannot establish appropriate coordination.
+
+
+
+\input{tables/half_duplex_benchmarks}
+
+\subsection{Full-Duplex Speech Interaction}
+\label{sec:full-duplex-datasets-and-benchmarks}
+
+Interaction rhythm concerns when a system should listen, speak, provide brief feedback, yield the floor, or continue an ongoing response. Full-duplex speech interaction provides an evaluation setting for these decisions, but simultaneous listening and speaking alone does not establish appropriate turn coordination. Evaluation must distinguish the occurrence of an acoustic event from the action that the system should take in context. We organize representative benchmarks by the interaction decisions they evaluate, covering turn-taking, interruption handling, backchannels, state maintenance, proactive initiation, and recovery. Table~\ref{tab:full-duplex-benchmarks} summarizes the relevant resources and evaluation protocols.
+
+\paragraph{Turn-Taking.}
+Turn-taking evaluation examines whether the system starts speaking after the user has finished while continuing to listen through pauses within an unfinished utterance. Results need to be read alongside success rates, premature responses, and latency. In FDB-v1, a higher take-over rate is desirable for regular turn transitions, whereas the same measure indicates unwanted interruptions during within-utterance pauses. Its turn-taking latency runs from the end of the user's audio to the start of the assistant's speech and includes only successful transitions, so the failure rate is needed to interpret it~\citep{DBLP:conf/asru/LinLLWALL25}. MTR-DuplexBench extends turn-taking and pause-handling evaluation to multiple rounds, examining whether these behaviors remain reliable as the conversation progresses~\citep{DBLP:conf/acl/HeCXLZBMK26}.
+
+\paragraph{Interruption Handling.}
+Interruption evaluation distinguishes overlapping input that requires yielding the floor from input that should not interrupt the current response. FD-Bench uses simulated conversations to assess interruption handling, response delays, and response quality under different noise conditions~\citep{DBLP:conf/interspeech/PengCNMN0C25}. MTR-DuplexBench evaluates whether the system stops speaking after a user interruption and produces a subsequent response across multiple rounds~\citep{DBLP:conf/acl/HeCXLZBMK26}. These measurements address different aspects of interruption handling: deciding whether to yield, stopping at an appropriate time, and responding to the intervening input. Stopping promptly does not by itself establish that the interruption was understood or that the subsequent response follows the user's revised intent.
+
+\paragraph{Backchannels and Feedback.}
+Generating a backchannel and responding to a user's backchannel are different capabilities. The former concerns whether brief feedback occurs at an appropriate time without taking over the floor; the latter concerns whether the system mistakenly stops speaking after an acknowledgment. FDB-v1 evaluates backchannel behavior, while MTR-DuplexBench reports backchannel frequency in multi-round conversations~\citep{DBLP:conf/asru/LinLLWALL25,DBLP:conf/acl/HeCXLZBMK26}. These generation-side measurements do not directly establish correct handling of user backchannels. Frequency also needs to be interpreted together with timing and appropriateness: frequent feedback may disrupt the user even when each individual utterance is brief.
+
+\paragraph{State Maintenance.}
+State maintenance concerns events that should not change the system's current listening or speaking behavior. Relevant cases include background speech, speech directed to another person, and user acknowledgments that do not request the floor. MTR-DuplexBench includes a background-speech condition in which the system is expected to continue its ongoing response~\citep{DBLP:conf/acl/HeCXLZBMK26}. FD-Bench provides complementary evaluation under noisy conditions~\citep{DBLP:conf/interspeech/PengCNMN0C25}. The target is whether the system preserves the appropriate interaction state, rather than merely whether it detects or classifies an acoustic event. False stops, unnecessary responses, and missed interruptions therefore need to be distinguished, since they reflect different failures in floor management.
+
+\paragraph{Proactive Initiation.}
+Proactive initiation concerns whether the system should speak when the user has not explicitly handed over the floor, such as during prolonged silence, hesitation, or a stalled task. Its appropriateness depends on the task stage, conversational context, and user preferences. Clarification also connects rhythm with content: deciding when to ask is a timing decision, while deciding what to ask requires identifying the missing information. Evaluation needs to specify the triggering condition, the system's current state, and the expected action. The benchmarks reviewed here provide limited dedicated coverage of these decisions; ordinary response latency cannot establish whether proactive initiation is appropriate.
+
+\paragraph{Recovery and Continuation.}
+Recovery evaluation examines whether the system should resume its previous response or redirect it after an interruption, and whether the resulting dialogue state remains consistent. FDB-v2 evaluates correction handling and entity tracking in conversations driven by the system's actual replies, providing evidence about semantic and task-state continuity across turns~\citep{DBLP:conf/acl/LinKSCAWL26}. Such outcomes need to be distinguished from playback continuity and agreement between the playback position and the stored dialogue history. A successful correction does not by itself verify that unspoken content has been excluded from the history. Recovery therefore requires checking semantic continuation, playback position, and task state separately, particularly after repeated interruptions.
+
+\paragraph{Full-Duplex Benchmarks.}
+The main benchmarks provide complementary evidence. FDB-v1 focuses on turn-taking behaviors, FD-Bench evaluates interruption handling and response quality under simulated conversational and noise conditions, and MTR-DuplexBench examines conversational features across multiple rounds~\citep{DBLP:conf/asru/LinLLWALL25,DBLP:conf/interspeech/PengCNMN0C25,DBLP:conf/acl/HeCXLZBMK26}. Their overlap with content evaluation arises when an interaction requires both an appropriate timing decision and a semantically correct response, as in understanding an interruption, applying a correction, or continuing the original task.
+
+Evaluation protocols determine which coordination claims are supported. FDB-v2 uses an examiner that continues the dialogue according to the system's actual replies. In contrast, the quality subset of MTR-DuplexBench supplies reference assistant history at each turn, so the two protocols expose different forms of error accumulation~\citep{DBLP:conf/acl/LinKSCAWL26,DBLP:conf/acl/HeCXLZBMK26}. Comparisons require consistent benchmark versions, timing boundaries, denominators, and treatment of failures. Reporting timing and content scores separately does not establish that both are correct in the same interaction. Evaluating their coordination requires checking whether the system takes the appropriate action at the appropriate time while preserving the intended meaning and task state.
+
+\input{tables/full_duplex_benchmarks}
+% \subsection{Agentic Audio Interaction Benchmarks}
+% \label{sec:agentic-audio-benchmarks}
+% TODO: Summarize tool-use, agent, embodied, and memory-related benchmarks.
+% \input{tables/agentic_audio_benchmarks}
+
+\input{tables/paper_statistics}
+\input{tables/industrial_products}

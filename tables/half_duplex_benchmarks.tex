@@ -1,0 +1,36 @@
+\begin{table*}[t]
+    \centering
+    \caption{Datasets and benchmarks for half-duplex speech interaction.}
+    \label{tab:half-duplex-benchmarks}
+    \scriptsize
+    \setlength{\tabcolsep}{2pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular*}{\textwidth}{@{}>{\raggedright\arraybackslash}p{\dimexpr.20\textwidth-4pt\relax}|>{\raggedright\arraybackslash}p{\dimexpr.18\textwidth-4pt\relax}|>{\raggedright\arraybackslash}p{\dimexpr.14\textwidth-4pt\relax}|>{\raggedright\arraybackslash}p{\dimexpr.11\textwidth-4pt\relax}|>{\raggedright\arraybackslash}p{\dimexpr.22\textwidth-4pt\relax}|>{\raggedright\arraybackslash}p{\dimexpr.15\textwidth-2pt-5\arrayrulewidth\relax}@{}}
+        \toprule
+        Dataset/Benchmark & Task & Scale & Modality & Annotation/Data Type & Source \\
+        \midrule
+        \multicolumn{6}{l}{\textit{Training Sets}} \\
+        \midrule
+        SpeechInstruct & Instruction following & 37,969 QA & Speech, text & \shortstack[l]{Instruction transcripts;\\reference responses} & \citep{DBLP:conf/emnlp/ZhangLZZWZQ23} \\
+        InstructS2S-200K & Instruction following & 200K QA & Speech, text & \shortstack[l]{Instruction transcripts;\\reference responses} & \citep{DBLP:conf/iclr/FangGZMZ025} \\
+        VoiceAssistant-400K & Assistant QA & 400K QA & Speech, text & \shortstack[l]{Question transcripts;\\reference responses} & \citep{DBLP:journals/corr/abs-2408-16725} \\
+        InstructS2S-200K & Multi-turn dialogue & 200K conversations & Speech, text & \shortstack[l]{Turn transcripts;\\reference responses} & \citep{DBLP:journals/corr/abs-2505-02625} \\
+        \midrule
+        \multicolumn{6}{l}{\textit{Training and Evaluation Sets}} \\
+        \midrule
+        StyleTalk & Style-aware responding & 2,967 QA & Speech, text & \shortstack[l]{Response text; emotion,\\speed, volume labels} & \citep{DBLP:conf/acl/LinCL24} \\
+        SD-Eval & Context-aware responding & 1,061.48 h & Audio, text & \shortstack[l]{Response text; emotion,\\accent, age, scene labels} & \citep{DBLP:conf/nips/AoWTCZ0W0024} \\
+        SpokenWOZ & DST; response generation & 249 h & Speech, text & \shortstack[l]{Transcripts; dialogue\\states; dialogue acts} & \citep{DBLP:conf/nips/SiMGWLD0Y0L23} \\
+        \midrule
+        \multicolumn{6}{l}{\textit{Evaluation Sets}} \\
+        \midrule
+        VoiceBench & QA; instructions; safety & 5,783 QA & Speech, text & Answers; constraints & \citep{DBLP:journals/corr/abs-2410-17196} \\
+        OpenAudioBench & Spoken QA; reasoning & 2,701 QA & Speech, text & Reference answers & \citep{DBLP:journals/corr/abs-2502-17239} \\
+        ADU-Bench & Ambiguity resolution & 1,390 QA & Speech, text & Reference responses & \citep{DBLP:journals/corr/abs-2412-05167} \\
+        TELEVAL & Spoken QA; conversation & 44,772 QA & Audio, text & \shortstack[l]{Answers; emotion\\and age labels} & \citep{DBLP:journals/corr/abs-2507-18061} \\
+        URO-Bench & Multi-turn dialogue & 510 QA & Speech, text & Reference responses & \citep{DBLP:journals/corr/abs-2502-17810} \\
+        VocalBench & Multi-turn dialogue & 400 QA & Speech, text & Reference responses & \citep{DBLP:journals/corr/abs-2505-15727} \\
+        VoiceAssistant-Eval & \shortstack[l]{Dialogue; roleplay;\\instructions; safety} & 6,905 QA & Speech, text & Reference responses & \citep{DBLP:journals/corr/abs-2509-22651} \\
+        \bottomrule
+    \end{tabular*}
+\end{table*}
